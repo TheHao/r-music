@@ -1,11 +1,13 @@
-<?php namespace App\Http\Controllers;
-use App\Order;
+<?php
 
-class HomeController extends Controller {
+namespace App\Http\Controllers;
+use App\User;
+
+class UserController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Home Controller
+	| User Controller
 	|--------------------------------------------------------------------------
 	|
 	| This controller renders your application's "dashboard" for users that
@@ -31,10 +33,22 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-            $order = new Order();
-            $orders = $order->getOrders();
-
-            return view('home', array('orders' => $orders));
+		return view('user.index');
 	}
+        
+        public function create()
+        {
+            try {
+                $user = new User;
+                $users = $user->getUser();
+            } catch (Exception $ex) {
+            }
+               return view('user.order');
+        }
+        
+        public function show()
+        {
+               return view('user.order');
+        }        
 
 }
