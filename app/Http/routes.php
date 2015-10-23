@@ -14,11 +14,11 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::get('user/order', 'UserController@order');
+Route::post('user/add', 'UserController@add');
 
 //Route::controllers([
 //	'auth' => 'Auth\AuthController',
 //	'password' => 'Auth\PasswordController',
 //]);
-//Route::controller('user', 'UserController');
-Route::resource('user', 'UserController');
-//Route::get('user/order', 'UserController@order');
+

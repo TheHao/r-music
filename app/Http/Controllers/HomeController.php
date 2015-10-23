@@ -31,10 +31,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-            $order = new Order();
+            $order = new Order;
             $orders = $order->getOrders();
 
-            return view('home', array('orders' => $orders));
+            return view('home', compact('orders'));
 	}
 
 }

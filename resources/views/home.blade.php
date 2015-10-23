@@ -21,7 +21,15 @@
                                         <td><?php echo $order->user_id;?></td>
                                         <td><?php echo $order->recipient;?></td>
                                         <td><?php echo $order->comment;?></td>
-                                        <td></td>
+                                        <td>
+                                        <?php 
+                                        if($order->status == 1):
+                                            echo 'selected';
+                                        else:
+                                            echo 'banned';
+                                        endif;
+                                        ?>
+                                        </td>
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>

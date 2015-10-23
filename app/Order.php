@@ -9,7 +9,14 @@ class Order extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'order';
+	protected $table = 'orders';
+        
+        /**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['user_id', 'song_name', 'song_url', 'status', 'recipient', 'comment', 'date', 'special_flg', 'special_reason', 'created_at', 'modified_at', 'updated_at'];
         
         public function getOrders(){
             return $this->all();
