@@ -32,8 +32,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = [];
         
+        const BANNED_FLG_TRUE = 1;
+        const BANNED_FLG_FLASE = 0;
+        
         public function getUser(){
             return $this->all();
+        }
+        
+        public function bannedUser($id){
+            $this->id = $id;
+            $this->banned_flg = self::BANNED_FLG_TRUE;
+            
+            return $this->save();
         }
 
 }
