@@ -41,11 +41,21 @@ class UserController extends Controller {
 		return view('user.index');
 	}
         
+        /**
+         * 
+         * @return form input
+         */
         public function order(){
             
             return view('user.order');
         }
         
+        /**
+         * Process order
+         * 
+         * @param Request $request
+         * @return type
+         */
         public function add(Request $request){
             $order = new Order;
             $order->user_id = $request->input('user_id');
@@ -58,11 +68,40 @@ class UserController extends Controller {
             $order->special_flg = 0;
             $order->special_reason = "abc";
             $order->created_at = date("Y-m-d H:i:s");
-            $order->modified_at = date("Y-m-d H:i:s");
             $order->updated_at = date("Y-m-d H:i:s");
             if($order->save()){
                 return redirect('/home');
             }
+        }
+        
+        /**
+         * Banned order 
+         * 
+         * @param int $id
+         * @return type
+         */
+        public function bannedOrder($id){
+            $order = new Order;
+            $banned = $order->bannedOrder($id);
+            
+            if($banned){
+                return redirect('/home');
+            }
+        }
+        
+        /**
+         * Banned User
+         * 
+         * @param int $id
+         */
+        public function bannedUser($id){
+            $user = new User;
+            $banned = $user->bannedUser($id);
+            
+            if($banned){
+                return redirect('admin/user');
+            }
+            
         }
 
 }
