@@ -1,7 +1,7 @@
-@extends('app')
+@extends('blank')
 
 @section('content')
-<div class="container">
+<div class="container" style="background: #fff;width: 600px; height: 600px;">
     {!!Form::open(array('action' => 'UserController@order'))!!}
     {!!Form::label('song_name', 'Bài hát')!!}
     {!!Form::text('song_name',"", ['placeholder'=>'bài hát...'])!!}

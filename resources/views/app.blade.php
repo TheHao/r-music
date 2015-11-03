@@ -45,8 +45,8 @@
 
         <!-- One -->
         @yield('content')
-        <div id = 'order-music' style="position:absolute; display: none;">
-                <form method="post" action="#" style="background-color: white;">
+        <div id = 'order-music' style="position:absolute; display: none;"><div class="content"></div></div>
+<!--                <form method="post" action="#" style="background-color: white;">
                     <div class="row uniform 50%">
                         <div class="6u 12u$(xsmall)">
                             <input type="text" name="name" id="name" value="" placeholder="Name" />
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </form>
-            <span class="button b-close"><span>X</span></span></div>
+            <span class="button b-close"><span>X</span></span></div>-->
 
 
 
@@ -131,7 +131,10 @@
                  containerWidth: '100%'
              });
              $('.special').click(function() {
-                 $('#order-music').bPopup();
+                 $('#order-music').bPopup({
+                     contentContainer:'.content',
+                     loadUrl: 'user/order' //Uses jQuery.load()
+                 });
              });
 
 
