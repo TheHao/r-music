@@ -58,19 +58,10 @@ class UserController extends Controller {
          */
         public function add(Request $request){
             $order = new Order;
-            $order->user_id = $request->input('user_id');
-            $order->song_name = $request->input('song_name');
-            $order->song_url = $request->input('song_url');
-            $order->recipient = $request->input('recipient');
-            $order->comment = $request->input('comment');
-            $order->status = 1;
-            $order->date = date("Y-m-d H:i:s");
-            $order->special_flg = 0;
-            $order->special_reason = "abc";
-            $order->created_at = date("Y-m-d H:i:s");
-            $order->updated_at = date("Y-m-d H:i:s");
-            if($order->save()){
-                return redirect('/home');
+            $result = $order->addOrder($request);
+            
+            if($result){
+                return redirect('/');
             }
         }
         

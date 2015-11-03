@@ -32,7 +32,7 @@ class WelcomeController extends Controller {
 	{
             $order = new Order;
             
-            $today = $order->getCratedAtLastOrderInsert();
+            $today = $order->getCreatedAtLastOrderInsert();
             $yesterday = $order->getPrevDate($today);
             $afterYesterday = $order->getPrevDate($yesterday);
             

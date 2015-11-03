@@ -15,7 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::get('user/order', 'UserController@order');
-Route::post('user/add', 'UserController@add');
+Route::post('user/order', 'UserController@add');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

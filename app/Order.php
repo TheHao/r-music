@@ -17,7 +17,7 @@ class Order extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['user_id', 'song_name', 'song_url', 'status', 'recipient', 'comment', 'date', 'special_flg', 'special_reason', 'created_at', 'updated_at'];
+	protected $fillable = ['user_id', 'song_name', 'song_url', 'status', 'recipient', 'comment', 'is_invisible', 'date', 'banned_flg', 'special_flg', 'special_reason', 'created_at', 'updated_at'];
         
         /**
          * Const Init
@@ -25,12 +25,34 @@ class Order extends Model {
         const BANNED_FLG_TRUE = 1;
         const BANNED_FLG_FLASE = 0;
         
+        /**
+         * Status
+         */
+        const STATUS_ADD_NEW = 0;
         const STATUS_CHOISE_AM = 1;
         const STATUS_CHOISE_PM = 2;
         
+        /**
+         * Special flag
+         */
+        const SPECIAL_FLG_TRUE = 1;
+        const SPECIAL_FLG_FLASE = 0;
+        
+        /**
+         * IS INVISIBLE
+         */
+        const IS_INVISIBLE_TRUE = 1;
+        const IS_INVISIBLE_FALSE = 0;
+
+        /**
+         * TIME START END
+         */
         const START_TIME = " 00:00:00";
         const END_TIME = " 23:59:59";
         
+        /**
+         * FORMAT DATE
+         */
         const FORMAT_DATE_BASE = "Y-m-d";
         const FORMAT_DATE_EXTENDS = "j F Y";
 
@@ -44,6 +66,7 @@ class Order extends Model {
             $orders = DB::table('orders')
                     ->where('created_at', '>', $date. self::START_TIME)
                     ->where('created_at', '<=', $date. self::END_TIME)
+                    ->orderBy('id', 'desc')
                     ->get();
             
             return $orders;
@@ -70,7 +93,7 @@ class Order extends Model {
          * Get creatd at
          * @return string
          */
-        public function getCratedAtLastOrderInsert(){
+        public function getCreatedAtLastOrderInsert(){
             $order = DB::table('orders')
                     ->orderBy('id', 'desc')
                     ->first();
@@ -125,6 +148,30 @@ class Order extends Model {
             return $date;
         }
         
+        /**
+         * Add new order
+         * 
+         * @param object $data
+         * @return boolean
+         */
+        public function addOrder($data){
+            
+            $date = date("Y-m-d H:i:s");
+            $this->user_id = 1;
+            $this->song_name = $data->song_name;
+            $this->song_url = $data->song_url;
+            $this->recipient = $data->recipient;
+            $this->comment = $data->comment;
+            $this->is_invisible = is_null($data->is_invisible)? self::IS_INVISIBLE_FALSE : $data->is_invisible;
+            $this->status = self::STATUS_ADD_NEW;
+            $this->date = $date;
+            $this->special_flg = is_null($data->special_flg)? self::SPECIAL_FLG_FLASE : $data->special_flg;
+            $this->special_reason = $data->special_reason;
+            $this->created_at = $date;
+            $this->updated_at = $date;
+            
+            return $this->save();
+        }
 
         /**
          * Banned order
