@@ -14,7 +14,58 @@
         <link rel="stylesheet" href="{{ asset('/css/jquery.pwstabs.css') }}" />
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-
+        <style>
+            .container {
+                padding: 20px;
+                width: 550px;
+                text-align: center;
+                border: 1px solid silver;
+                border-radius: 10px; 
+            }
+            #order-form label.label-for-input{
+                text-align: left;
+                margin-left: 28px;
+                margin-bottom: 0px;
+                margin-top: 5px
+            }
+            #order-form label.error {
+                color:#D4909F !important;
+                font-weight:bold;
+                text-align: left;
+                padding-left: 29px;
+            }
+            #order-form input[type="text"],textarea{
+                width: 500px;
+                margin: 0 auto;
+                height: 40px;
+            }
+            #order-form textarea {
+                height: 60px;
+            } 
+                
+            input[type="checkbox"] + label:before, input[type="radio"] + label:before {
+                height: 2em !important;
+                width: 2em !important;
+                float: left;
+            }   
+            #submit {
+                margin-top: 15px;
+            }
+            label.label-for-input {
+                float: left;
+            }
+            label.require-class {
+                color: red;
+                width: 120px;
+                position: relative;
+                top: 5px;
+            }
+            .checkbox-input {
+                text-align: left !important;
+                padding-left: 29px;
+                padding-top: 12px;
+            }
+        </style>
     </head>
     <body class="landing">
 
@@ -113,6 +164,7 @@
         </footer>
 
         <!-- Scripts -->
+        <!--<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>-->
         <script src="{{ asset('/js/jquery.min.js') }}"></script>
         <script src="{{ asset('/js/skel.min.js') }}"></script>
         <script src="{{ asset('/js/util.js') }}"></script>
@@ -122,10 +174,12 @@
         <script src="{{ asset('/js/jquery.pwstabs.min.js') }}"></script>
         <script src="{{ asset('/js/jquery.bpopup.min.js') }}"></script>
         <script src="{{ asset('/js/jquery.fancybox.js') }}"></script>
+        <script src="{{ asset('/js/jquery.validate.min.js') }}"></script>
+        
 
         <script>
-            jQuery(document).ready(function($) {
-
+            jQuery(document).ready(function() {
+                
              $('.tabset10').pwstabs({
                  effect: 'none',
                  containerWidth: '100%'
@@ -136,9 +190,34 @@
                      loadUrl: 'user/order' //Uses jQuery.load()
                  });
              });
-
-
             });
+            
+            function submitOrder() {
+                
+//                var song = $('#song_name').val();
+//                var songUrl = $('#song_url').val();
+//                var recipient = $('#recipient').val();
+//                var comment = $('#comment').val();
+//                var specialFlg = $('#special-flg')[0].checked  ;
+//                var specialReason = $('#special_reason').val();
+//                if(song === ""){
+//                    return alert('Bạn hãy điền tên của bài hát mà mình muốn order!!!');
+//                }
+//                if(songUrl === ""){
+//                    return alert('Bạn hãy điền đường link của bài hát!!!');
+//                }
+//                if(recipient === ""){
+//                    return alert('Bạn hãy điền tên của người mà bạn muốn gửi tặng!!!');
+//                }
+//                if(comment === ""){
+//                    return alert('Bạn hãy viết những lời nhắn nhủ thân thương đến người nhận!!!');
+//                }
+//                if(specialFlg == true){
+//                    if(specialReason === ""){
+//                    return alert('Bạn phải điền tên của bài hát');
+//                }
+//                }
+            }
         </script>
 
     </body>

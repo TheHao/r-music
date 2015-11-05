@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 //use App\Http\Requests\Request;
 use Illuminate\Http\Request;
+use Illuminate\Validation;
 //use Illuminate\Routing\Controller;
 use App\User;
 use App\Order;
 
 class UserController extends Controller {
-
 	/*
 	|--------------------------------------------------------------------------
 	| User Controller
