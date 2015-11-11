@@ -38,7 +38,10 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		return view('user.index');
+            $user = new User;
+            $users = $user->getListUser();
+            
+            return view('user.index', compact('users'));
 	}
         
         /**
@@ -85,14 +88,22 @@ class UserController extends Controller {
          * 
          * @param int $id
          */
-        public function bannedUser($id){
+        public function banned($id){
             $user = new User;
             $banned = $user->bannedUser($id);
             
             if($banned){
-                return redirect('admin/user');
+                return redirect('admin');
             }
+        }
+        
+        public function active($id){
+            $user = new User;
+            $active = $user->bannedUser($id);
             
+            if($active){
+                return redirect('admin');
+            }
         }
 
 }

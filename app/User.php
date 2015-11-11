@@ -35,10 +35,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         const BANNED_FLG_TRUE = 1;
         const BANNED_FLG_FLASE = 0;
         
-        public function getUser(){
-            return $this->all();
+        /**
+         * Get List User
+         * 
+         * @return array
+         */
+        public function getListUser(){
+            $users = DB::table('users')
+                    ->orderBy('id', 'desc')
+                    ->get();
+            
+            return $users;
         }
         
+        /**
+         * Banned User
+         * 
+         * @param int $id
+         * @return boolean
+         */
         public function bannedUser($id){
             $this->id = $id;
             $this->banned_flg = self::BANNED_FLG_TRUE;
