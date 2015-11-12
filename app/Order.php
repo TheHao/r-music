@@ -19,12 +19,6 @@ class Order extends Model {
 	 */
 	protected $fillable = ['user_id', 'song_name', 'song_url', 'status', 'recipient', 'comment', 'is_invisible', 'date', 'banned_flg', 'special_flg', 'special_reason', 'created_at', 'updated_at'];
         
-        private $rules = [
-                            'song_name' => 'required|alpha|min:3',
-                            'song_url'  => 'required',
-                            'recipient'  => 'required',
-                            // .. more rules here ..
-                         ];
         /**
          * Const Init
          */
@@ -62,13 +56,6 @@ class Order extends Model {
         const FORMAT_DATE_BASE = "Y-m-d";
         const FORMAT_DATE_EXTENDS = "j F Y";
         
-        public function validate($data){
-        // make a new validator object
-        $v = Validator::make($data, $this->rules);
-        // return the result
-        return $v->passes();
-        }
-
         /**
          * Get all order by date
          * 

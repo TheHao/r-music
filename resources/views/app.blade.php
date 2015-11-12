@@ -190,34 +190,15 @@
                      loadUrl: 'user/order' //Uses jQuery.load()
                  });
              });
+             $('.update').click(function() {
+                 var userid = $('#userid').text();
+                 $('#order-music').bPopup({
+                     contentContainer:'.content',
+                     loadUrl: 'admin/update/'+ userid //Uses jQuery.load()
+                 });
+             });
             });
             
-            function submitOrder() {
-                
-//                var song = $('#song_name').val();
-//                var songUrl = $('#song_url').val();
-//                var recipient = $('#recipient').val();
-//                var comment = $('#comment').val();
-//                var specialFlg = $('#special-flg')[0].checked  ;
-//                var specialReason = $('#special_reason').val();
-//                if(song === ""){
-//                    return alert('Bạn hãy điền tên của bài hát mà mình muốn order!!!');
-//                }
-//                if(songUrl === ""){
-//                    return alert('Bạn hãy điền đường link của bài hát!!!');
-//                }
-//                if(recipient === ""){
-//                    return alert('Bạn hãy điền tên của người mà bạn muốn gửi tặng!!!');
-//                }
-//                if(comment === ""){
-//                    return alert('Bạn hãy viết những lời nhắn nhủ thân thương đến người nhận!!!');
-//                }
-//                if(specialFlg == true){
-//                    if(specialReason === ""){
-//                    return alert('Bạn phải điền tên của bài hát');
-//                }
-//                }
-            }
         </script>
 
     </body>

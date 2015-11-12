@@ -18,8 +18,9 @@ Route::get('user/order', 'UserController@order');
 Route::post('user/order', 'UserController@add');
 Route::get('admin', 'UserController@index');
 Route::get('admin/banned/{id}', 'UserController@banned');
-Route::get('admin/active/{id}', 'UserController@banned');
+Route::get('admin/actived/{id}', 'UserController@actived');
 Route::get('admin/update/{id}', 'UserController@update');
+Route::post('admin/update/{id}', 'UserController@save');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

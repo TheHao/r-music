@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'image', 'status', 'del_flg', 'admin_flg', 'created_at', 'modified_at'];
+	protected $fillable = ['name', 'email', 'image','banned_flg', 'del_flg', 'admin_flg', 'created_at', 'updated_at'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -49,16 +49,59 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
         
         /**
+         * Get user by id
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function getUser($id){
+            $user =  DB::table('users')
+                    ->whereId($id)
+                    ->first();
+            
+            return $user;
+        }
+
+                /**
          * Banned User
          * 
          * @param int $id
          * @return boolean
          */
         public function bannedUser($id){
-            $this->id = $id;
-            $this->banned_flg = self::BANNED_FLG_TRUE;
+            $banned = DB::table('users')
+                        ->where('id', $id)
+                        ->update(['banned_flg' => self::BANNED_FLG_TRUE, 'updated_at' => date("Y-m-d H:i:s")]);
             
-            return $this->save();
+            return $banned;
+        }
+        
+        /**
+         * Actived User
+         * 
+         * @param int $id
+         * @return boolean
+         */
+        public function activedUser($id){
+            $actived = DB::table('users')
+                        ->where('id', $id)
+                        ->update(['banned_flg' => self::BANNED_FLG_FLASE, 'updated_at' => date("Y-m-d H:i:s")]);
+            
+            return $actived;
+        }
+        
+        /**
+         * Update user info
+         * 
+         * @param object $data
+         * @return boolean
+         */
+        public function updateUser($data){
+            $updated = DB::table('users')
+                        ->where('id', $data->id)
+                        ->update(['name' => $data->name, 'email' => $data->email, 'banned_flg' =>  empty($data->banned_flg)? self::BANNED_FLG_FLASE : self::BANNED_FLG_TRUE, 'updated_at' => date("Y-m-d H:i:s")]);
+            
+            return $updated;
         }
 
 }

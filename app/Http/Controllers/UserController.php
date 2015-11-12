@@ -97,11 +97,45 @@ class UserController extends Controller {
             }
         }
         
-        public function active($id){
+        /**
+         * Actived user
+         * 
+         * @param int $id
+         * @return 
+         */
+        public function actived($id){
             $user = new User;
-            $active = $user->bannedUser($id);
+            $actived = $user->activedUser($id);
             
-            if($active){
+            if($actived){
+                return redirect('admin');
+            }
+        }
+        
+        /**
+         * Get user info for form update
+         * 
+         * @param int $id
+         * @return view
+         */
+        public function update($id){
+            $user = new User;
+            $user = $user->getUser($id);
+            
+            return view('user.update', compact('user'));
+        }
+        
+        /**
+         * Save user info
+         * 
+         * @param object $request
+         * @return view
+         */
+        public function save(Request $request){
+            $user = new User;
+            $updated = $user->updateUser($request);
+            
+            if($updated){
                 return redirect('admin');
             }
         }

@@ -21,21 +21,29 @@
                             @foreach ($users as $user)
                                 @if ($user->banned_flg === 0)
                                     <tr class="order-selected">
-                                        <td>{{$user->id}}</td>
+                                        <td id='userid' value='{{$user->id}}'>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at}}</td>
                                         <td>{!!link_to_action('UserController@banned','Active' , ['id' => $user->id], null)!!}</td>
-                                        <td>{!!link_to_action('UserController@update','Update' , ['id' => $user->id], null)!!}</td>
+                                        <td>
+                                            <ul class="actions">
+                                            <li><a href="#" class="button update">Update</a></li>
+                                            </ul>
+                                        </td>
                                     </tr>
                                 @else
                                     <tr class="order-banned">
-                                        <td>{{$user->id}}</td>
+                                        <td id='userid' value='{{$user->id}}'>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at}}</td>
-                                        <td>{!!link_to_action('UserController@active','Banned' , ['id' => $user->id], null)!!}</td>
-                                        <td>{!!link_to_action('UserController@update','Update' , ['id' => $user->id], null)!!}</td>
+                                        <td>{!!link_to_action('UserController@actived','Banned' , ['id' => $user->id], null)!!}</td>
+                                        <td>
+                                            <ul class="actions">
+                                            <li><a href="#" class="button update">Update</a></li>
+                                            </ul>
+                                        </td>
                                     </tr>
                                 @endif    
                             @endforeach
