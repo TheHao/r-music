@@ -22,6 +22,8 @@ Route::get('admin/actived/{id}', 'UserController@actived');
 Route::get('admin/update/{id}', 'UserController@update');
 Route::post('admin/update/{id}', 'UserController@save');
 
+Route::get('admin/random/{time}', 'UserController@random');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

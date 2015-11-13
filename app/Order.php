@@ -73,6 +73,21 @@ class Order extends Model {
         }
         
         /**
+         * Get list order by user id
+         * 
+         * @param int $userId
+         * @return array
+         */
+        public function getListOrderByUserId($userId = null){
+            $orders = DB::table('orders')
+                    ->where('user_id', '=', $userId)
+                    ->orderBy('id', 'desc')
+                    ->get();
+            
+            return $orders;
+        }
+
+                /**
          * Get choisr order AM, PM
          * 
          * @param string $date

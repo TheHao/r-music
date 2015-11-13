@@ -184,12 +184,16 @@
                  effect: 'none',
                  containerWidth: '100%'
              });
+             
+             //load form order
              $('.special').click(function() {
                  $('#order-music').bPopup({
                      contentContainer:'.content',
                      loadUrl: 'user/order' //Uses jQuery.load()
                  });
              });
+             
+             //load form update
              $('.update').click(function() {
                  var userid = $('#userid').text();
                  $('#order-music').bPopup({
@@ -197,8 +201,23 @@
                      loadUrl: 'admin/update/'+ userid //Uses jQuery.load()
                  });
              });
+             
+             $('.random-am').click(function() {
+                 $('#order-music').bPopup({
+                     contentContainer:'.content',
+                     loadUrl: 'admin/random/'+ 'am' //Uses jQuery.load()
+                 });
+             });
+             
+             $('.random-am').click(function() {
+                 $('#order-music').bPopup({
+                     contentContainer:'.content',
+                     loadUrl: 'admin/random/'+ 'pm' //Uses jQuery.load()
+                 });
+             });
+             
+             
             });
-            
         </script>
 
     </body>

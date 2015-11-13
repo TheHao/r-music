@@ -99,7 +99,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         public function updateUser($data){
             $updated = DB::table('users')
                         ->where('id', $data->id)
-                        ->update(['name' => $data->name, 'email' => $data->email, 'banned_flg' =>  empty($data->banned_flg)? self::BANNED_FLG_FLASE : self::BANNED_FLG_TRUE, 'updated_at' => date("Y-m-d H:i:s")]);
+                        ->update(['name' => $data->name, 'email' => $data->email, 'banned_flg' =>  !is_null($data->banned_flg)? self::BANNED_FLG_TRUE : self::BANNED_FLG_FLASE, 'updated_at' => date("Y-m-d H:i:s")]);
             
             return $updated;
         }

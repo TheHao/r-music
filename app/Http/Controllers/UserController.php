@@ -126,7 +126,7 @@ class UserController extends Controller {
         }
         
         /**
-         * Save user info
+         * Save user update info
          * 
          * @param object $request
          * @return view
@@ -139,5 +139,21 @@ class UserController extends Controller {
                 return redirect('admin');
             }
         }
+        
+        public function listOrder(){
+            $order = new Order;
+            $orders = $order->getListOrderByUserId(1);
+        }
+        
+        public function random($time){
+            $order = new Order;
+            
+            $today = $order->getCreatedAtLastOrderInsert();
+            $orders = $order->getOrders($today);
+            
+            return view('user.random', compact('orders'));
+        }
+        
+        
 
 }

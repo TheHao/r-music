@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="background: #fff;width: 600px;">
 <image src='/images/order-form.png'/>
-{!!Form::open(['action' => ['UserController@update', $user->id], 'id' => 'order-form'])!!}
+{!!Form::open(['action' => ['UserController@random', $time], 'id' => 'order-form'])!!}
 {!!Form::hidden('id', $user->id)!!}
 {!!Form::label('name', 'UserName',['class' => 'label-for-input'])!!}
 <label class='require-class'>(*)</label>

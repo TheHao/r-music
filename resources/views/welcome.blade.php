@@ -67,54 +67,66 @@
                 </div>
                 <div data-pws-tab="tab222" data-pws-tab-name="Sáng">
                     <table class="alt">
-                        <thead>
-                            <tr>
-                                <th>Stt</th>
-                                <th>Bài hát</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Sms</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($todayChoiseAms as $choise)
-                                <tr class="order-selected">
-                                    <td>{{$choise->id}}</td>
-                                    <td>{{$choise->song_name}}</td>
-                                    <td>{{$choise->user_id}}</td>
-                                    <td>{{$choise->recipient}}</td>
-                                    <td>{{$choise->comment}}</td>
-                                    <td>{{"Selected"}}</td>
+                        @if (!empty($todayChoiseAms))
+                            <thead>
+                                <tr>
+                                    <th>Stt</th>
+                                    <th>Bài hát</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Sms</th>
+                                    <th></th>
                                 </tr>
-                            @endforeach
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                @foreach ($todayChoiseAms as $choise)
+                                    <tr class="order-selected">
+                                        <td>{{$choise->id}}</td>
+                                        <td>{{$choise->song_name}}</td>
+                                        <td>{{$choise->user_id}}</td>
+                                        <td>{{$choise->recipient}}</td>
+                                        <td>{{$choise->comment}}</td>
+                                        <td>{{"Selected"}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        @else
+                            <ul class="actions"  style="text-align: center;">
+                                <li><a href="#" class="button big random-am">Random</a></li>
+                            </ul>
+                        @endif
                     </table>
                 </div>      
                 <div data-pws-tab="tab333" data-pws-tab-name="Chiều">
                     <table class="alt">
-                        <thead>
-                            <tr>
-                                <th>Stt</th>
-                                <th>Bài hát</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Sms</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($todayChoisePms as $choise)
-                                <tr class="order-selected">
-                                    <td>{{$choise->id}}</td>
-                                    <td>{{$choise->song_name}}</td>
-                                    <td>{{$choise->user_id}}</td>
-                                    <td>{{$choise->recipient}}</td>
-                                    <td>{{$choise->comment}}</td>
-                                    <td>{{"Selected"}}</td>
+                        @if (!empty($todayChoisePms))
+                            <thead>
+                                <tr>
+                                    <th>Stt</th>
+                                    <th>Bài hát</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Sms</th>
+                                    <th></th>
                                 </tr>
-                            @endforeach
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                @foreach ($todayChoisePms as $choise)
+                                    <tr class="order-selected">
+                                        <td>{{$choise->id}}</td>
+                                        <td>{{$choise->song_name}}</td>
+                                        <td>{{$choise->user_id}}</td>
+                                        <td>{{$choise->recipient}}</td>
+                                        <td>{{$choise->comment}}</td>
+                                        <td>{{"Selected"}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        @else
+                            <ul class="actions"  style="text-align: center;">
+                                <li><a href="#" class="button big random-pm">Random</a></li>
+                            </ul>
+                        @endif
                     </table>
                 </div>                            
             </div>
